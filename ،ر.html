@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="ar">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>عداد الذكر</title>
+<style>
+  body {
+    font-family: 'Arial', sans-serif;
+    text-align: center;
+    margin: 0;
+    padding: 0;
+    background-color: #f7f7f7;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+  }
+  .counter-container {
+    background-color: #fff;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  }
+  .phrase {
+    font-size: 2em;
+    margin: 10px 0;
+  }
+  .count {
+    font-size: 1.5em;
+    margin: 10px 0;
+  }
+  .like-button {
+    background-color: #008CBA;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    margin: 4px 2px;
+    cursor: pointer;
+    border-radius: 5px;
+    transition: background-color 0.3s;
+  }
+  .like-button:hover {
+    background-color: #005f73;
+  }
+</style>
+</head>
+<body>
+
+<div class="counter-container">
+  <div id="phrase" class="phrase">استغفر الله</div>
+  <div id="count" class="count">0</div>
+  <button id="likeButton" class="like-button">إعجاب</button>
+</div>
+
+<script>
+  let count = 0;
+  const phrases = ["استغفر الله", "الحمدالله", "الله اكبر", "لا اله إلا الله وحده لا شريك له الملك وله الحمد وهو على كل شيء قدير"];
+  let currentPhraseIndex = 0;
+  const phraseDisplay = document.getElementById('phrase');
+  const countDisplay = document.getElementById('count');
+  const likeButton = document.getElementById('likeButton');
+
+  likeButton.addEventListener('click', function() {
+    count++;
+    if (count === 33) {
+      count = 0;
+      currentPhraseIndex = (currentPhraseIndex + 1) % phrases.length;
+      phraseDisplay.textContent = phrases[currentPhraseIndex];
+    }
+    countDisplay.textContent = count;
+  });
+</script>
+
+</body>
+</html>
